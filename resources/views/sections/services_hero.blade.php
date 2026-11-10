@@ -1,7 +1,7 @@
 @php
     $svcHero = getContent('services_hero.content', true);
     $values = @$svcHero->data_values;
-    $img = @$values->image ? asset($values->image) : asset('assets/images/3s/services-hero.jpg');
+    $img = frontendImage('services_hero', @$values->image, 'assets/images/3s/services-hero.jpg');
 @endphp
 
 <!-- SERVICES · 01 HERO -->

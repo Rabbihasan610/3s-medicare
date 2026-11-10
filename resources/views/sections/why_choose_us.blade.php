@@ -2,7 +2,7 @@
     $whyContent = getContent('why_choose_us.content', true);
     $whyElements = getContent('why_choose_us.element', false, null, true);
     $values = @$whyContent->data_values;
-    $img = @$values->image ? asset($values->image) : asset('assets/images/3s/why-team.jpg');
+    $img = frontendImage('why_choose_us', @$values->image, 'assets/images/3s/why-team.jpg');
 @endphp
 
 <!-- SECTION 05 · WHY CHOOSE US -->

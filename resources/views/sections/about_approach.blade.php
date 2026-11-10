@@ -2,7 +2,7 @@
     $apprContent = getContent('about_approach.content', true);
     $apprElements = getContent('about_approach.element', false, null, true);
     $values = @$apprContent->data_values;
-    $img = @$values->image ? asset($values->image) : asset('assets/images/3s/why-team.jpg');
+    $img = frontendImage('about_approach', @$values->image, 'assets/images/3s/why-team.jpg');
 @endphp
 
 <!-- ABOUT · 02 OUR APPROACH -->

@@ -1,7 +1,7 @@
 @php
     $aboutHero = getContent('about_hero.content', true);
     $values = @$aboutHero->data_values;
-    $img = @$values->image ? asset($values->image) : asset('assets/images/3s/about-hero.jpg');
+    $img = frontendImage('about_hero', @$values->image, 'assets/images/3s/about-hero.jpg');
 @endphp
 
 <!-- ABOUT · 01 HERO -->

@@ -17,7 +17,7 @@
         @php
             $itemVal = $item->data_values;
             $chips = array_filter(array_map('trim', explode(',', @$itemVal->tags ?? '')));
-            $img = @$itemVal->thumb ? asset($itemVal->thumb) : asset('assets/images/3s/card-be-found.jpg');
+            $img = frontendImage('digital_impact', @$itemVal->thumb ?: @$itemVal->image, 'assets/images/3s/card-be-found.jpg');
             $delay = ($index * 0.12) . 's';
         @endphp
         <div class="col-md-6 col-lg-4 reveal" style="--d:{{ $delay }}">

@@ -2,7 +2,7 @@
     $heroContent = getContent('hero.content', true);
     $heroValues = @$heroContent->data_values;
     $heroTags = array_filter(array_map('trim', explode(',', @$heroValues->hero_tags ?? 'Doctors, Hospitals, Clinics, Diagnostic Centers')));
-    $heroImg = @$heroValues->hero_image ? asset($heroValues->hero_image) : asset('assets/images/3s/hero-doctor.jpg');
+    $heroImg = frontendImage('hero', @$heroValues->hero_image, 'assets/images/3s/hero-doctor.jpg');
 @endphp
 
 <!-- SECTION 01 · HERO -->

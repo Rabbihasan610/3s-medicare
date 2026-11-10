@@ -15,7 +15,7 @@
       @forelse($helpElements as $index => $item)
         @php
             $itemVal = $item->data_values;
-            $img = @$itemVal->thumb ? asset($itemVal->thumb) : asset('assets/images/3s/who-doctors.jpg');
+            $img = frontendImage('who_we_help', @$itemVal->thumb ?: @$itemVal->image, 'assets/images/3s/who-doctors.jpg');
             $delay = ($index * 0.1) . 's';
         @endphp
         <div class="col-sm-6 col-lg-3 reveal" style="--d:{{ $delay }}">

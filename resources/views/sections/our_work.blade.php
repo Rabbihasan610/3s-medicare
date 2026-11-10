@@ -2,7 +2,8 @@
     $workContent = getContent('our_work.content', true);
     $values = @$workContent->data_values;
     $project = App\Models\Project::featured()->first();
-    $img = $project && $project->thumbnail ? asset($project->thumbnail) : (@$values->showcase_image ? asset($values->showcase_image) : asset('assets/images/3s/work-showcase.jpg'));
+    $showcase = @$values->showcase_image ?: @$values->image;
+    $img = $project && $project->thumbnail ? asset($project->thumbnail) : frontendImage('our_work', $showcase, 'assets/images/3s/work-showcase.jpg');
 @endphp
 
 <!-- SECTION 07 · OUR WORK -->

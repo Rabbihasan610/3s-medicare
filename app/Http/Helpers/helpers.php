@@ -129,6 +129,35 @@ function siteEmailLogo()
     return filter_var($url, FILTER_VALIDATE_URL) ? $url : url(ltrim($url, '/'));
 }
 
+function frontendImage($section, $image, $default = null)
+{
+    if (empty($image)) {
+        return $default ? asset($default) : asset('assets/images/default.png');
+    }
+
+    $image = (string) $image;
+
+    if (str_starts_with($image, 'http://') || str_starts_with($image, 'https://')) {
+        return $image;
+    }
+
+    if (str_starts_with($image, 'assets/') || str_starts_with($image, '/assets/')) {
+        return asset(ltrim($image, '/'));
+    }
+
+    $sectionPath = 'assets/images/frontend/' . $section . '/' . ltrim($image, '/');
+
+    if (file_exists(public_path($sectionPath))) {
+        return asset($sectionPath);
+    }
+
+    if ($default && !file_exists(public_path($sectionPath))) {
+        return asset($default);
+    }
+
+    return asset($sectionPath);
+}
+
 function getImage($image, $size = null)
 {
     $clean = '';
