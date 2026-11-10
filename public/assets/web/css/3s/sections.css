@@ -1,0 +1,104 @@
+/* ==========================================================
+   HOME PAGE SECTIONS — one block per section.
+   Order: 01 hero · 02 impact · 03 who-we-help · 04 services
+          05 why-us · 06 process · 07 our-work · 08 cta
+   ========================================================== */
+
+/* ---------- 01 HERO ---------- */
+.hero { background: radial-gradient(1200px 500px at 85% 0%, rgba(25,181,165,.16), transparent 60%), #081C36; padding-block: clamp(3.5rem, 7vw, 6rem); overflow: hidden; }
+.hero h1 { color: #fff; font-size: var(--fs-h1); margin-bottom: 1.1rem; }
+.hero p.hero-text { color: var(--text-on-dark); max-width: 440px; font-size: .95rem; margin-bottom: 1.8rem; }
+.hero-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 1.6rem; }
+.hero .btn-3s, .hero-actions .btn-3s { border-radius: 0; }
+.hero-tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; font-size: .75rem; color: rgba(255,255,255,.68); }
+.hero-tags li { padding: 0 .9rem; border-left: 1px solid rgba(255,255,255,.25); }
+.hero-tags li:first-child { padding-left: 0; border-left: 0; }
+.hero-media { position: relative; }
+.hero-media img { width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); animation: floatY 6s ease-in-out infinite; }
+.hero-media::before { content: ""; position: absolute; inset: -14px -14px auto auto; width: 55%; height: 55%; border: 2px solid rgba(25,181,165,.35); border-radius: var(--radius-lg); z-index: 0; }
+.hero-media img { position: relative; z-index: 1; }
+@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* ---------- 02 DIGITAL IMPACT ---------- */
+.impact-card {
+  height: 100%; padding: 1.25rem 1.25rem 1.5rem;
+  background: #fff; border: 1px solid #e3eaf0;
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 18px rgba(10, 35, 66, .04);
+  transition: transform var(--t-base), box-shadow var(--t-base), border-color var(--t-base);
+}
+.impact-card:hover { transform: translateY(-8px); box-shadow: var(--glow-teal); border-color: #e3eaf0; border-top-color: var(--accent); }
+.impact-card .thumb { overflow: hidden; border-radius: var(--radius-md); margin-bottom: 1.1rem; }
+.impact-card .thumb img { width: 100%; aspect-ratio: 16/9; object-fit: cover; transition: transform var(--t-slow); }
+.impact-card:hover .thumb img { transform: scale(1.06); }
+.impact-card h3 { font-size: var(--fs-h3); margin-bottom: .4rem; }
+.impact-card p { font-size: var(--fs-sm); color: var(--c-ink-500); margin-bottom: .9rem; }
+.chip { display: inline-block; font-size: .68rem; font-weight: var(--fw-medium); color: var(--c-teal-600); background: var(--c-teal-50); border: 1px solid var(--c-teal-100); padding: .22rem .65rem; border-radius: var(--radius-pill); margin: 0 .25rem .35rem 0; }
+
+/* ---------- 03 WHO WE HELP ---------- */
+.help-card { height: 100%; background: #fff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform var(--t-base), box-shadow var(--t-base); }
+.help-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+.help-card .thumb { overflow: hidden; }
+.help-card .thumb img { width: 100%; aspect-ratio: 16/11; object-fit: cover; transition: transform var(--t-slow); }
+.help-card:hover .thumb img { transform: scale(1.08); }
+.help-card .body { padding: 1.1rem 1.2rem 1.3rem; }
+.help-card h3 { font-size: 1.05rem; margin-bottom: .35rem; }
+.help-card p { font-size: .8rem; color: var(--c-ink-500); margin-bottom: .8rem; }
+.link-arrow { font-size: .8rem; font-weight: var(--fw-semibold); color: var(--c-blue-600); display: inline-flex; gap: .35rem; align-items: center; }
+.link-arrow i { transition: transform var(--t-fast); }
+.link-arrow:hover { color: var(--accent-hover); }
+.link-arrow:hover i { transform: translateX(4px); }
+
+/* ---------- 04 SERVICES ---------- */
+.svc-group { display: grid; grid-template-columns: 1fr 2.2fr; gap: 2rem; padding-block: 1.6rem; }
+.svc-group + .svc-group { margin-top: 1.2rem; }
+.svc-group .group-no { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--c-teal-400); font-weight: var(--fw-semibold); }
+.svc-group h3 { font-size: 1.15rem; margin-top: .4rem; }
+.svc-list { list-style: none; margin: 0; padding: 0; }
+.svc-row { display: grid; grid-template-columns: 1fr 1.4fr 24px; gap: 1rem; align-items: center; padding: 1rem .6rem; border-bottom: 1px solid var(--c-line-dark); transition: background var(--t-fast), padding var(--t-fast); cursor: pointer; }
+.svc-row:first-child { border-top: 1px solid var(--c-line-dark); }
+.svc-row strong { color: #fff; font-weight: var(--fw-medium); font-size: .9rem; }
+.svc-row span { font-size: .82rem; color: rgba(255,255,255,.62); }
+.svc-row i { color: var(--c-teal-400); font-size: .8rem; transition: transform var(--t-fast); justify-self: end; }
+.svc-row:hover { background: rgba(255,255,255,.05); padding-left: 1.1rem; }
+.svc-row:hover i { transform: translateX(5px); }
+@media (max-width: 767.98px) {
+  .svc-group { grid-template-columns: 1fr; gap: .8rem; }
+  .svc-row { grid-template-columns: 1fr 24px; }
+  .svc-row span { grid-column: 1; grid-row: 2; }
+  .svc-row i { grid-column: 2; grid-row: 1 / span 2; }
+}
+
+/* ---------- 05 WHY CHOOSE US ---------- */
+.why-media { position: relative; }
+.why-media img { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+.why-media::after { content: ""; position: absolute; left: -14px; bottom: -14px; width: 40%; height: 40%; border-radius: var(--radius-lg); background: var(--c-teal-50); z-index: -1; }
+.why-list { list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.why-list li { padding: 1rem 0; border-bottom: 1px solid var(--c-line); transition: padding var(--t-fast); }
+.why-list li:last-child { border-bottom: 0; }
+.why-list li:hover { padding-left: .6rem; }
+.why-list strong { display: block; color: var(--text-heading); font-size: .95rem; }
+.why-list span { font-size: .82rem; color: var(--c-ink-500); }
+
+/* ---------- 06 PROCESS ---------- */
+.step-card { position: relative; height: 100%; padding: 1.6rem 1.3rem; background: rgba(255,255,255,.7); border: 1px solid #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow: hidden; transition: transform var(--t-base), box-shadow var(--t-base); }
+.step-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.step-card .no { font-size: 3.2rem; font-weight: 800; line-height: 1; color: var(--c-teal-100); transition: color var(--t-base), transform var(--t-base); display: inline-block; margin-bottom: .6rem; }
+.step-card:hover .no { color: var(--accent); transform: scale(1.08); }
+.step-card h3 { font-size: 1rem; margin-bottom: .4rem; }
+.step-card p { font-size: .8rem; color: var(--c-ink-500); margin: 0; }
+.step-card::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform var(--t-base); }
+.step-card:hover::after { transform: scaleX(1); }
+
+/* ---------- 07 OUR WORK ---------- */
+.work-media { position: relative; overflow: hidden; border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
+.work-media img { width: 100%; transition: transform var(--t-slow); }
+.work-media:hover img { transform: scale(1.05); }
+
+/* ---------- 08 CTA ---------- */
+.cta { background: radial-gradient(700px 300px at 50% 0%, rgba(25,181,165,.18), transparent 70%), #081C36; text-align: center; }
+.cta h2 { font-size: var(--fs-h2); max-width: 620px; margin-inline: auto; }
+.cta p { color: var(--text-on-dark); margin: 1rem 0 1.8rem; }
+.cta .btn-3s--primary { animation: ctaPulse 2.8s infinite; }
+@keyframes ctaPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(25,181,165,.45); } 60% { box-shadow: 0 0 0 14px rgba(25,181,165,0); } }

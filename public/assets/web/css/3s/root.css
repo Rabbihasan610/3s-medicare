@@ -1,0 +1,78 @@
+/* ==========================================================
+   3S MEDI CARE — ROOT DESIGN TOKENS
+   Edit values here to restyle every page of the site.
+   ========================================================== */
+:root {
+  /* Brand colors */
+  --c-navy-900: #061a33;
+  --c-navy-800: #0a2342;
+  --c-navy-700: #0d2d54;
+  --c-navy-600: #12386a;
+  --c-teal-500: #19b5a5;
+  --c-teal-600: #12998b;
+  --c-teal-400: #3cd0c0;
+  --c-teal-100: #d8f3ef;
+  --c-teal-50:  #e8f7f5;
+  --c-blue-600: #0b5cad;
+  --c-blue-700: #094a8c;
+
+  /* Neutrals */
+  --c-white:    #ffffff;
+  --c-ink-900:  #0b1b2e;
+  --c-ink-700:  #33475b;
+  --c-ink-500:  #5d7184;
+  --c-ink-300:  #b9c6d2;
+  --c-line:     #e3eaf0;
+  --c-line-dark: rgba(255, 255, 255, .14);
+
+  /* Semantic */
+  --bg-page:        var(--c-white);
+  --bg-dark:        #081C36;
+  --bg-darker:      #081C36;
+  --bg-tint:        var(--c-teal-50);
+  --bg-header:      #081C24;
+  --bg-header-scrolled: #081C24;
+  --bg-hero:        #081C36;
+  --text-body:      var(--c-ink-700);
+  --text-heading:   var(--c-ink-900);
+  --text-on-dark:   rgba(255, 255, 255, .78);
+  --accent:         var(--c-teal-500);
+  --accent-hover:   var(--c-teal-600);
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-eyebrow: .78rem;
+  --fs-body:    1rem;
+  --fs-sm:      .875rem;
+  --fs-h1:      clamp(2.2rem, 4.2vw, 3.4rem);
+  --fs-h2:      clamp(1.8rem, 3vw, 2.6rem);
+  --fs-h3:      1.25rem;
+  --fw-medium:  500;
+  --fw-semibold: 600;
+  --fw-bold:    700;
+  --lh-tight:   1.15;
+  --lh-body:    1.65;
+
+  /* Spacing & layout */
+  --section-y:  clamp(4rem, 8vw, 6.5rem);
+  --container:  1200px;
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  22px;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --shadow-sm: 0 2px 8px rgba(10, 35, 66, .06);
+  --shadow-md: 0 10px 30px rgba(10, 35, 66, .10);
+  --shadow-lg: 0 24px 60px rgba(10, 35, 66, .18);
+  --glow-teal: 0 0 0 1px rgba(25, 181, 165, .35), 0 12px 36px rgba(25, 181, 165, .22);
+
+  /* Motion */
+  --ease: cubic-bezier(.22, .8, .24, 1);
+  --t-fast: .2s var(--ease);
+  --t-base: .45s var(--ease);
+  --t-slow: .9s var(--ease);
+
+  /* Header */
+  --header-h: 68px;
+}

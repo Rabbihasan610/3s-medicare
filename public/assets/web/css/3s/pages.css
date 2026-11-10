@@ -1,0 +1,63 @@
+/* ==========================================================
+   INNER-PAGE SECTIONS (contact, and later services / about)
+   ========================================================== */
+
+/* ---------- CONTACT ---------- */
+.contact-info-card { height: 100%; padding: 2rem; border-radius: var(--radius-lg); background: var(--bg-dark); color: var(--text-on-dark); position: relative; overflow: hidden; }
+.contact-info-card::after { content: ""; position: absolute; right: -60px; bottom: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(25,181,165,.15); }
+.contact-info-card h2 { color: #fff; font-size: 1.5rem; margin-bottom: .6rem; }
+.contact-item { display: flex; gap: .9rem; margin-top: 1.4rem; position: relative; z-index: 1; }
+.contact-item .ico { flex: 0 0 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: rgba(25,181,165,.18); color: var(--c-teal-400); transition: transform var(--t-base), background var(--t-base); }
+.contact-item:hover .ico { transform: rotate(-8deg) scale(1.08); background: var(--accent); color: var(--c-navy-900); }
+.contact-item strong { display: block; color: #fff; font-size: .9rem; }
+.contact-item span { font-size: .85rem; color: rgba(255,255,255,.65); }
+
+.form-card { padding: 2.2rem; background: #fff; border: 1.5px solid var(--c-teal-100); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+.form-card .form-label { font-size: .82rem; font-weight: var(--fw-semibold); color: var(--text-heading); }
+.form-card .form-control, .form-card .form-select { border: 1.5px solid var(--c-line); border-radius: var(--radius-sm); padding: .7rem .9rem; font-size: .9rem; transition: border-color var(--t-fast), box-shadow var(--t-fast); }
+.form-card .form-control:focus, .form-card .form-select:focus { border-color: var(--accent); box-shadow: 0 0 0 .22rem rgba(25,181,165,.18); }
+.service-check { display: flex; flex-wrap: wrap; gap: .5rem; }
+.service-check input { position: absolute; opacity: 0; pointer-events: none; }
+.service-check label { cursor: pointer; font-size: .78rem; padding: .35rem .85rem; border: 1.5px solid var(--c-line); border-radius: var(--radius-pill); color: var(--c-ink-700); transition: all var(--t-fast); }
+.service-check label:hover { border-color: var(--accent); }
+.service-check input:checked + label { background: var(--accent); border-color: var(--accent); color: var(--c-navy-900); font-weight: var(--fw-semibold); }
+.service-check input:focus-visible + label { box-shadow: 0 0 0 .22rem rgba(25,181,165,.3); }
+.form-success { display: none; text-align: center; padding: 2rem 0; }
+.form-success i { font-size: 3rem; color: var(--accent); }
+.form-card.is-sent form { display: none; }
+.form-card.is-sent .form-success { display: block; animation: popIn .5s var(--ease); }
+@keyframes popIn { from { opacity: 0; transform: scale(.9); } to { opacity: 1; transform: none; } }
+
+.map-block { height: 340px; border-radius: var(--radius-lg); position: relative; overflow: hidden; background: linear-gradient(135deg, var(--c-navy-700), var(--c-navy-800)); display: grid; place-items: center; text-align: center; color: var(--text-on-dark); }
+.map-block::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 34px 34px; }
+.map-block > div { position: relative; }
+.map-block .pin { width: 46px; height: 46px; margin: 0 auto 1rem; border-radius: 50%; background: var(--c-teal-400); color: var(--c-navy-900); display: grid; place-items: center; font-size: 1.2rem; animation: pinPulse 2.2s infinite; }
+
+/* ---------- SHARED INNER HERO (about + services) ---------- */
+.inner-hero { background: radial-gradient(1000px 420px at 85% 10%, rgba(25,181,165,.15), transparent 60%), var(--bg-darker); padding-block: clamp(3.5rem, 7vw, 6rem); overflow: hidden; }
+.inner-hero .eyebrow { display: inline-flex; align-items: center; gap: .7rem; }
+.inner-hero .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--accent); }
+.inner-hero h1 { color: #fff; font-size: clamp(2rem, 3.6vw, 3rem); margin-bottom: 1.2rem; max-width: 520px; }
+.inner-hero .hero-text { color: var(--text-on-dark); max-width: 470px; margin-bottom: 1.8rem; }
+.inner-hero .hero-visual { position: relative; }
+.inner-hero .hero-visual img { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); animation: floatY 7s ease-in-out infinite; }
+
+/* ---------- ABOUT · approach ---------- */
+.about-approach .why-list { margin-top: 1.4rem; border-top: 1px solid var(--c-line); }
+.about-approach .why-list li:last-child { border-bottom: 0; }
+
+/* ---------- SERVICES · light service groups ---------- */
+.svc-light { padding-block: clamp(3rem, 6vw, 4.5rem); }
+.svc-light + .svc-light { border-top: 1px solid var(--c-line); }
+.svc-light .group-head h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); margin-bottom: .6rem; }
+.svc-light .group-head p { color: var(--c-ink-500); max-width: 300px; font-size: .95rem; }
+@media (min-width: 992px) { .svc-light .group-head { position: sticky; top: calc(var(--header-h) + 24px); } }
+.svc-item { display: grid; grid-template-columns: 42px 1fr auto; gap: 1.1rem; align-items: start; padding: 1.4rem .8rem; border-top: 1px solid var(--c-line); transition: background var(--t-fast), padding var(--t-fast); }
+.svc-item:last-child { border-bottom: 1px solid var(--c-line); }
+.svc-item:hover { background: var(--c-teal-50); padding-left: 1.3rem; }
+.svc-item .ico { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--c-line); border-radius: 8px; background: #fff; color: var(--c-blue-600); font-size: .95rem; transition: all var(--t-base); }
+.svc-item:hover .ico { background: var(--accent); border-color: var(--accent); color: var(--c-navy-900); transform: rotate(-6deg) scale(1.08); }
+.svc-item h3 { font-size: 1.15rem; margin-bottom: .25rem; }
+.svc-item p { margin: 0; font-size: .92rem; color: var(--c-ink-500); max-width: 440px; }
+.svc-item .link-arrow { white-space: nowrap; padding-top: .3rem; }
+@media (max-width: 575.98px) { .svc-item { grid-template-columns: 42px 1fr; } .svc-item .link-arrow { grid-column: 2; } }

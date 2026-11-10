@@ -1,0 +1,770 @@
+/*
+ * AI Help Center - hero ask bar, inline answers, floating widget.
+ *
+ * Self-contained on purpose. Tailwind only scans resources/** and the public
+ * stylesheet is pre-built, so any class generated from JavaScript would not
+ * exist in the compiled CSS. Writing the styles here means the feature renders
+ * correctly without anyone having to run `npm run build`.
+ *
+ * Layout uses logical properties (inline-start/end, margin-inline) so the whole
+ * thing mirrors under dir="rtl" with no separate Arabic stylesheet.
+ */
+
+.amlk {
+    --amlk-violet: #6d47ff;
+    --amlk-violet-deep: #4e2dca;
+    --amlk-ink: #0b0620;
+    --amlk-mist: #eef3f9;
+    --amlk-gold: #fdba2d;
+    --amlk-text: #253042;
+    --amlk-soft: #6b7280;
+    --amlk-line: #e3e7f0;
+    --amlk-radius: 16px;
+    --amlk-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+    --amlk-shadow-lg: 0 18px 50px rgba(17, 24, 39, 0.18);
+
+    font-family: inherit;
+    color: var(--amlk-text);
+    box-sizing: border-box;
+}
+
+.amlk *,
+.amlk *::before,
+.amlk *::after {
+    box-sizing: inherit;
+}
+
+/* Scoped copy: the public Tailwind bundle is pre-built and may not carry it. */
+.amlk .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ------------------------------------------------------------ hero ask bar */
+
+.amlk-hero {
+    background: #fff;
+    padding: 48px 24px;
+}
+
+.amlk-hero__inner {
+    max-width: 860px;
+    margin-inline: auto;
+    background: var(--amlk-mist);
+    border: 1px solid rgba(109, 71, 255, 0.12);
+    border-radius: 28px;
+    padding: 32px 28px;
+    box-shadow: var(--amlk-shadow);
+}
+
+.amlk-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(109, 71, 255, 0.1);
+    color: var(--amlk-violet-deep);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+}
+
+.amlk-hero__head {
+    text-align: center;
+}
+
+.amlk-hero__title {
+    margin: 16px 0 8px;
+    font-size: clamp(22px, 3.4vw, 30px);
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--amlk-ink);
+}
+
+.amlk-hero__sub {
+    margin: 0 auto;
+    max-width: 560px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--amlk-soft);
+}
+
+/* --------------------------------------------------------------- ask field */
+
+.amlk-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 26px;
+    background: #fff;
+    border: 1px solid rgba(109, 71, 255, 0.18);
+    border-radius: var(--amlk-radius);
+    padding: 8px;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.amlk-field:focus-within {
+    border-color: var(--amlk-violet);
+    box-shadow: 0 0 0 4px rgba(109, 71, 255, 0.12);
+}
+
+.amlk-field__icon {
+    display: none;
+    /* Centred against the input's own line box rather than the padding box, so
+       the glyph does not ride high next to a 16px input. */
+    align-items: center;
+    align-self: stretch;
+    padding-inline-start: 14px;
+    color: var(--amlk-violet);
+    font-size: 18px;
+}
+
+.amlk-field__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    /* `appearance` matters more than `border: 0` here: a type=search input is
+       drawn by the engine with its own inset box, which border/outline alone do
+       not remove - that is the second rectangle that showed inside the field. */
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    background: transparent;
+    padding: 12px 14px;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: inherit;
+    color: var(--amlk-text);
+}
+
+/* The engine's own clear/decoration glyphs sit on top of the field and fight
+   with the search icon and the Ask button. */
+.amlk-field__input::-webkit-search-decoration,
+.amlk-field__input::-webkit-search-cancel-button,
+.amlk-field__input::-webkit-search-results-button,
+.amlk-field__input::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* The field already shows focus through :focus-within; a second ring on the
+   input itself draws a box inside a box. */
+.amlk-field__input:focus,
+.amlk-field__input:focus-visible {
+    outline: 0;
+    box-shadow: none;
+}
+
+.amlk-field__input::placeholder {
+    color: var(--amlk-soft);
+}
+
+.amlk-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--amlk-violet);
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px 22px;
+    cursor: pointer;
+    transition: background 0.16s ease, transform 0.16s ease;
+    white-space: nowrap;
+}
+
+.amlk-btn:hover:not(:disabled) {
+    background: var(--amlk-violet-deep);
+}
+
+.amlk-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.amlk-btn--ghost {
+    background: transparent;
+    color: var(--amlk-violet-deep);
+    border: 1px solid rgba(109, 71, 255, 0.25);
+}
+
+.amlk-btn--ghost:hover:not(:disabled) {
+    background: rgba(109, 71, 255, 0.06);
+}
+
+.amlk :focus-visible {
+    outline: 2px solid var(--amlk-violet);
+    outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------ suggestions */
+
+.amlk-chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.amlk-chips__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--amlk-soft);
+}
+
+.amlk-chip {
+    border: 1px solid rgba(109, 71, 255, 0.22);
+    background: #fff;
+    color: var(--amlk-violet-deep);
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.amlk-chip:hover {
+    background: rgba(109, 71, 255, 0.07);
+    border-color: var(--amlk-violet);
+}
+
+.amlk-note {
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--amlk-soft);
+}
+
+/* -------------------------------------------------------------- answer card */
+
+.amlk-answer {
+    margin-top: 18px;
+    background: #fff;
+    border: 1px solid var(--amlk-line);
+    border-radius: var(--amlk-radius);
+    padding: 22px;
+    box-shadow: var(--amlk-shadow);
+    animation: amlk-rise 0.22s ease-out;
+}
+
+@keyframes amlk-rise {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.amlk-answer__q {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--amlk-soft);
+}
+
+.amlk-answer__body {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--amlk-text);
+}
+
+.amlk-answer--empty {
+    border-color: rgba(253, 186, 45, 0.5);
+}
+
+.amlk-answer__cta {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.amlk-sources {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--amlk-line);
+}
+
+.amlk-sources__label {
+    margin: 0 0 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amlk-soft);
+}
+
+.amlk-sources__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.amlk-sources__list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--amlk-violet-deep);
+    text-decoration: none;
+}
+
+.amlk-sources__list a:hover {
+    text-decoration: underline;
+}
+
+/* The model's one-line note on why a source is worth opening. Sits under the
+   link, muted, so it explains without competing with the link itself. */
+.amlk-sources__why {
+    display: block;
+    margin-top: 2px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--amlk-soft);
+}
+
+/* ------------------------------------------------------- follow-up chips */
+
+.amlk-replies {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.amlk-replies__chip {
+    padding: 7px 14px;
+    border: 1px solid var(--amlk-line);
+    border-radius: 999px;
+    background: #fff;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--amlk-violet-deep);
+    cursor: pointer;
+    /* Chips carry model-written text of unpredictable length; wrapping keeps a
+       long suggestion inside the panel instead of forcing it to scroll. */
+    text-align: start;
+    white-space: normal;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.amlk-replies__chip:hover {
+    border-color: var(--amlk-violet);
+    background: var(--amlk-mist);
+}
+
+.amlk-replies__chip:focus-visible {
+    outline: 2px solid var(--amlk-violet);
+    outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------- feedback */
+
+.amlk-feedback {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--amlk-line);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--amlk-soft);
+}
+
+.amlk-feedback__btn {
+    border: 1px solid var(--amlk-line);
+    background: #fff;
+    border-radius: 10px;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--amlk-text);
+    transition: border-color 0.16s ease, background 0.16s ease;
+}
+
+.amlk-feedback__btn:hover:not(:disabled) {
+    border-color: var(--amlk-violet);
+    background: rgba(109, 71, 255, 0.05);
+}
+
+.amlk-feedback__btn:disabled {
+    opacity: 0.55;
+    cursor: default;
+}
+
+.amlk-feedback__thanks {
+    font-weight: 600;
+    color: var(--amlk-violet-deep);
+}
+
+/* ------------------------------------------------------------------ typing */
+
+.amlk-typing {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 0;
+}
+
+.amlk-typing span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--amlk-violet);
+    opacity: 0.35;
+    animation: amlk-blink 1.1s infinite ease-in-out;
+}
+
+.amlk-typing span:nth-child(2) {
+    animation-delay: 0.16s;
+}
+
+.amlk-typing span:nth-child(3) {
+    animation-delay: 0.32s;
+}
+
+@keyframes amlk-blink {
+    0%, 80%, 100% {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+    40% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+/* ------------------------------------------------------------------ widget */
+
+/*
+ * Floating controls sit in one column above the WhatsApp widget.
+ *
+ * That widget is a third-party script (WATI) pinned to the physical right at
+ * roughly 50px from each edge, in BOTH languages - it is configured
+ * `position: "right"` regardless of locale. So these use physical `right`
+ * rather than `inset-inline-end`: the logical property flips to the left in
+ * Arabic and would scatter the two buttons to opposite corners on the Arabic
+ * site while they stack correctly on the English one.
+ *
+ * The offset below clears the WhatsApp pill (50px margin + its own height) with
+ * a gap, which is what stops the two overlapping as they did before.
+ */
+.amlk-launcher {
+    position: fixed;
+    /* 50 (its margin-bottom) + 50 (its height) + 16 gap. Verified against the
+       widget's own stylesheet, not estimated from a screenshot. */
+    inset-block-end: 116px;
+    right: 50px;
+    /* Above WATI, which pins itself near the top of the stacking order. */
+    z-index: 2147482000;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--amlk-violet);
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 20px;
+    cursor: pointer;
+    box-shadow: var(--amlk-shadow-lg);
+    transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.amlk-launcher:hover {
+    background: var(--amlk-violet-deep);
+    transform: translateY(-2px);
+}
+
+.amlk-launcher__icon {
+    font-size: 19px;
+    line-height: 1;
+}
+
+.amlk-launcher[hidden],
+.amlk-panel[hidden] {
+    display: none !important;
+}
+
+/*
+ * The open panel deliberately outranks the WhatsApp button and covers it. A
+ * 400x600 panel anchored bottom-right will always overlap a button pinned to
+ * the same corner; letting the third-party button float on top of a live
+ * conversation is the worse of the two outcomes, and it returns the moment the
+ * panel is closed.
+ */
+.amlk-panel {
+    position: fixed;
+    inset-block-end: 24px;
+    right: 24px;
+    z-index: 2147483000;
+    width: min(400px, calc(100vw - 32px));
+    height: min(600px, calc(100vh - 44px));
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--amlk-line);
+    border-radius: 20px;
+    box-shadow: var(--amlk-shadow-lg);
+    overflow: hidden;
+    animation: amlk-pop 0.2s ease-out;
+}
+
+@keyframes amlk-pop {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.amlk-panel__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    background: var(--amlk-ink);
+    color: #fff;
+    flex: 0 0 auto;
+}
+
+.amlk-panel__title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.amlk-panel__sub {
+    margin: 2px 0 0;
+    font-size: 11.5px;
+    opacity: 0.72;
+}
+
+.amlk-panel__close {
+    margin-inline-start: auto;
+    border: 0;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 17px;
+    line-height: 1;
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.amlk-panel__close:hover {
+    background: rgba(255, 255, 255, 0.26);
+}
+
+.amlk-panel__body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 18px;
+    background: var(--amlk-mist);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.amlk-panel__foot {
+    flex: 0 0 auto;
+    padding: 12px;
+    border-top: 1px solid var(--amlk-line);
+    background: #fff;
+}
+
+.amlk-panel__foot .amlk-field {
+    margin-top: 0;
+}
+
+.amlk-panel__foot .amlk-field__input {
+    font-size: 14px;
+    padding: 9px 12px;
+}
+
+.amlk-panel__foot .amlk-btn {
+    padding: 9px 16px;
+}
+
+/* -------------------------------------------------------------- bubbles */
+
+.amlk-msg {
+    max-width: 88%;
+    animation: amlk-rise 0.2s ease-out;
+}
+
+.amlk-msg--me {
+    align-self: flex-end;
+    background: var(--amlk-violet);
+    color: #fff;
+    border-radius: 14px 14px 4px 14px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.amlk-msg--bot {
+    align-self: flex-start;
+    background: #fff;
+    border: 1px solid var(--amlk-line);
+    border-radius: 14px 14px 14px 4px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.65;
+    box-shadow: 0 2px 8px rgba(17, 24, 39, 0.04);
+    width: 100%;
+}
+
+.amlk-msg--bot .amlk-sources,
+.amlk-msg--bot .amlk-feedback {
+    margin-top: 14px;
+    padding-top: 12px;
+}
+
+.amlk-msg--bot .amlk-answer__cta {
+    margin-top: 14px;
+}
+
+.amlk-msg--bot .amlk-btn {
+    font-size: 13px;
+    padding: 9px 16px;
+}
+
+.amlk-intro {
+    background: #fff;
+    border: 1px solid var(--amlk-line);
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--amlk-text);
+}
+
+/* A greeting carries the panel now, so it is sized to be read at a glance
+   rather than as body copy. */
+.amlk-intro__greeting {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--amlk-ink);
+}
+
+.amlk-intro__chips {
+    display: grid;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.amlk-intro__chips .amlk-chip {
+    text-align: start;
+    width: 100%;
+}
+
+.amlk-error {
+    background: #fff4f4;
+    border: 1px solid #f3c9c9;
+    color: #97362f;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 13.5px;
+    line-height: 1.55;
+}
+
+/* ------------------------------------------------------------- responsive */
+
+@media (min-width: 640px) {
+    .amlk-field__icon {
+        display: inline-flex;
+    }
+}
+
+@media (max-width: 560px) {
+    .amlk-field {
+        flex-wrap: wrap;
+    }
+
+    .amlk-field__input {
+        flex-basis: 100%;
+    }
+
+    .amlk-field .amlk-btn {
+        flex: 1 1 auto;
+    }
+
+    .amlk-panel {
+        left: 12px;
+        right: 12px;
+        inset-block-end: 12px;
+        width: auto;
+        height: min(78vh, calc(100vh - 24px));
+    }
+
+    /*
+     * On a phone the two floating pills are a real cost - side by side they
+     * covered a third of the hero. This one shrinks to its icon and a short
+     * label, and shares the WhatsApp widget's own right offset (50px) so the
+     * two line up on one edge instead of staggering. The script above refines
+     * both numbers from the real button once WATI has mounted.
+     */
+    .amlk-launcher {
+        /* Same geometry on a phone: the widget's 600px media query restyles its
+           chat panel only, never the send button - so 50 + 50 + 12 gap. */
+        inset-block-end: 112px;
+        right: 50px;
+        padding: 11px 16px;
+        font-size: 13px;
+        gap: 8px;
+    }
+
+    .amlk-launcher__icon {
+        font-size: 17px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .amlk *,
+    .amlk-panel,
+    .amlk-answer,
+    .amlk-msg {
+        animation: none !important;
+        transition: none !important;
+    }
+}

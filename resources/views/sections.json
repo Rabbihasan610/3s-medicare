@@ -1,0 +1,244 @@
+{
+    "breadcrumb": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Breadcrumb Section",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "1350x360"
+                }
+            }
+        }
+    },
+    "hero": {
+        "builder": true,
+        "name": "Home Hero Section",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "heading": {"name": "Main Heading", "type": "text"},
+            "heading_accent": {"name": "Accent Heading Text", "type": "text"},
+            "subheading": {"name": "Subheading Description", "type": "textarea"},
+            "btn_1_text": {"name": "Primary Button Text", "type": "text"},
+            "btn_1_url": {"name": "Primary Button URL", "type": "text"},
+            "btn_2_text": {"name": "Secondary Button Text", "type": "text"},
+            "btn_2_url": {"name": "Secondary Button URL", "type": "text"},
+            "hero_tags": {"name": "Tags (comma separated)", "type": "text"},
+            "images": {
+                "hero_image": {"size": "656x391"}
+            }
+        }
+    },
+    "digital_impact": {
+        "builder": true,
+        "name": "Digital Impact Section",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "title": {"name": "Section Title", "type": "text"},
+            "lead": {"name": "Section Lead Text", "type": "textarea"}
+        },
+        "element": {
+            "modal": true,
+            "title": "text",
+            "description": "textarea",
+            "tags": "text",
+            "images": {
+                "thumb": {"size": "370x240"}
+            }
+        }
+    },
+    "who_we_help": {
+        "builder": true,
+        "name": "Who We Help Section",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "title": {"name": "Section Title", "type": "text"}
+        },
+        "element": {
+            "modal": true,
+            "title": "text",
+            "description": "textarea",
+            "link_text": "text",
+            "link_url": "text",
+            "images": {
+                "thumb": {"size": "300x200"}
+            }
+        }
+    },
+    "services": {
+        "builder": true,
+        "name": "Home Services Preview",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "title": {"name": "Section Title", "type": "text"},
+            "lead": {"name": "Section Lead", "type": "textarea"}
+        }
+    },
+    "why_choose_us": {
+        "builder": true,
+        "name": "Why Choose Us Section",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "title": {"name": "Section Title", "type": "text"},
+            "images": {
+                "image": {"size": "580x420"}
+            }
+        },
+        "element": {
+            "modal": true,
+            "title": "text",
+            "description": "textarea"
+        }
+    },
+    "process": {
+        "builder": true,
+        "name": "How We Work (Process)",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "title": {"name": "Section Title", "type": "text"}
+        },
+        "element": {
+            "modal": true,
+            "step_no": "text",
+            "title": "text",
+            "description": "textarea"
+        }
+    },
+    "our_work": {
+        "builder": true,
+        "name": "Our Work Showcase",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "title": {"name": "Section Title", "type": "text"},
+            "btn_text": {"name": "Button Text", "type": "text"},
+            "btn_url": {"name": "Button URL", "type": "text"},
+            "images": {
+                "showcase_image": {"size": "580x380"}
+            }
+        }
+    },
+    "cta": {
+        "builder": true,
+        "name": "Call To Action Banner",
+        "content": {
+            "heading": {"name": "Heading Text", "type": "text"},
+            "subheading": {"name": "Subheading Text", "type": "textarea"},
+            "btn_1_text": {"name": "Button 1 Text", "type": "text"},
+            "btn_1_url": {"name": "Button 1 URL", "type": "text"},
+            "btn_2_text": {"name": "Button 2 Text", "type": "text"},
+            "btn_2_url": {"name": "Button 2 URL", "type": "text"}
+        }
+    },
+    "about_hero": {
+        "builder": true,
+        "name": "About Us Hero",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "heading": {"name": "Heading Text", "type": "text"},
+            "description": {"name": "Description", "type": "textarea"},
+            "btn_1_text": {"name": "Button 1 Text", "type": "text"},
+            "btn_1_url": {"name": "Button 1 URL", "type": "text"},
+            "btn_2_text": {"name": "Button 2 Text", "type": "text"},
+            "btn_2_url": {"name": "Button 2 URL", "type": "text"},
+            "images": {
+                "image": {"size": "667x444"}
+            }
+        }
+    },
+    "about_approach": {
+        "builder": true,
+        "name": "About Our Approach",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "title": {"name": "Section Title", "type": "text"},
+            "images": {
+                "image": {"size": "580x420"}
+            }
+        },
+        "element": {
+            "modal": true,
+            "title": "text",
+            "description": "textarea"
+        }
+    },
+    "services_hero": {
+        "builder": true,
+        "name": "Services Hero",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "heading": {"name": "Heading Text", "type": "text"},
+            "description": {"name": "Description", "type": "textarea"},
+            "btn_1_text": {"name": "Button 1 Text", "type": "text"},
+            "btn_1_url": {"name": "Button 1 URL", "type": "text"},
+            "btn_2_text": {"name": "Button 2 Text", "type": "text"},
+            "btn_2_url": {"name": "Button 2 URL", "type": "text"},
+            "images": {
+                "image": {"size": "665x405"}
+            }
+        }
+    },
+    "services_groups": {
+        "builder": true,
+        "name": "Services Full Catalog",
+        "content": {
+            "intro": {"name": "Section Intro Note", "type": "text"}
+        }
+    },
+    "contact_banner": {
+        "builder": true,
+        "name": "Contact Page Banner",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "heading": {"name": "Banner Heading", "type": "text"},
+            "subheading": {"name": "Banner Subheading", "type": "textarea"}
+        }
+    },
+    "contact_form": {
+        "builder": true,
+        "name": "Contact Info & Quote Form",
+        "content": {
+            "card_title": {"name": "Info Card Title", "type": "text"},
+            "card_subtitle": {"name": "Info Card Subtitle", "type": "textarea"},
+            "email": {"name": "Contact Email", "type": "text"},
+            "phone": {"name": "Contact Phone", "type": "text"},
+            "hours": {"name": "Business Hours", "type": "text"},
+            "location": {"name": "Office Location", "type": "text"}
+        }
+    },
+    "contact_map": {
+        "builder": true,
+        "name": "Contact Location / Map",
+        "content": {
+            "location_name": {"name": "Location Name", "type": "text"},
+            "map_note": {"name": "Map Note", "type": "text"},
+            "embed_code": {"name": "Google Maps Embed URL / Iframe", "type": "textarea"}
+        }
+    },
+    "get_quote": {
+        "builder": true,
+        "name": "Get a Quote Form",
+        "content": {
+            "eyebrow": {"name": "Eyebrow Text", "type": "text"},
+            "title": {"name": "Main Heading", "type": "text"},
+            "subheading": {"name": "Subheading Description", "type": "textarea"},
+            "categories": {"name": "Quick Categories (comma separated)", "type": "textarea"},
+            "services_list": {"name": "Available Services Options (comma separated)", "type": "textarea"},
+            "side_card_title": {"name": "Sidebar Card Title", "type": "text"},
+            "side_card_desc": {"name": "Sidebar Card Description", "type": "textarea"},
+            "side_points": {"name": "Key Benefits (comma separated)", "type": "textarea"},
+            "btn_text": {"name": "Submit Button Text", "type": "text"}
+        }
+    },
+    "footer": {
+        "builder": false,
+        "name": "Footer Section",
+        "content": {
+            "about_text": {"name": "About Healthcare Description", "type": "textarea"},
+            "email": {"name": "Contact Email", "type": "text"},
+            "phone": {"name": "Contact Phone", "type": "text"},
+            "hours": {"name": "Working Hours", "type": "text"},
+            "location": {"name": "Office Location", "type": "text"},
+            "copyright_text": {"name": "Copyright Notice", "type": "text"}
+        }
+    }
+}
